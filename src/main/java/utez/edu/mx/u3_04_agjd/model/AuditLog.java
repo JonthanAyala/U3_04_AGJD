@@ -1,4 +1,4 @@
-package utez.edu.mx.U3_04_AGJD.model;
+package utez.edu.mx.u3_04_agjd.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

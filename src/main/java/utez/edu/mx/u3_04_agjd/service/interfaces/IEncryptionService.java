@@ -1,6 +1,6 @@
-package utez.edu.mx.U3_04_AGJD.service.interfaces;
+package utez.edu.mx.u3_04_agjd.service.interfaces;
 
-// PRINCIPIO SOLID: Interface Segregation Principle (ISP)
+
 public interface IEncryptionService {
     String encrypt(String data);
     String decrypt(String encryptedData);

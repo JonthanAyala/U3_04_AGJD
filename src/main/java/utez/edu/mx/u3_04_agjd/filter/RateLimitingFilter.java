@@ -1,4 +1,4 @@
-package utez.edu.mx.U3_04_AGJD.filter;
+package utez.edu.mx.u3_04_agjd.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.concurrent.ConcurrentHashMap;
 
-// PRINCIPIO DE SEGURIDAD: Rate Limiting para prevenir ataques DoS (implementación simple sin bucket4j)
 @Slf4j
 @Component
 public class RateLimitingFilter extends OncePerRequestFilter {

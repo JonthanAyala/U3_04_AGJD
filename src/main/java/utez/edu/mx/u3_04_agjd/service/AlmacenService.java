@@ -1,9 +1,9 @@
-package utez.edu.mx.U3_04_AGJD.service;
+package utez.edu.mx.u3_04_agjd.service;
 
-import utez.edu.mx.U3_04_AGJD.model.Almacen;
-import utez.edu.mx.U3_04_AGJD.repository.AlmacenRepository;
-import utez.edu.mx.U3_04_AGJD.repository.SedeRepository;
-import utez.edu.mx.U3_04_AGJD.service.interfaces.IAlmacenService;
+import utez.edu.mx.u3_04_agjd.model.Almacen;
+import utez.edu.mx.u3_04_agjd.repository.AlmacenRepository;
+import utez.edu.mx.u3_04_agjd.repository.SedeRepository;
+import utez.edu.mx.u3_04_agjd.service.interfaces.IAlmacenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +39,7 @@ public class AlmacenService implements IAlmacenService {
     
     @Override
     public List<Almacen> obtenerAlmacenesPorSede(UUID sedeId) {
-        return almacenRepository.findBySedeId(sedeId);
+        return almacenRepository.findBySede_Id(sedeId);
     }
     
     @Override
@@ -53,7 +53,7 @@ public class AlmacenService implements IAlmacenService {
                 .map(sede -> {
                     almacen.setSede(sede);
                     Almacen almacenGuardado = almacenRepository.save(almacen);
-                    almacenGuardado.generarClaveAlmacen();
+                    almacenGuardado.actualizarClaveAlmacen();
                     return almacenRepository.save(almacenGuardado);
                 });
     }

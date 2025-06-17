@@ -1,5 +1,7 @@
-package utez.edu.mx.U3_04_AGJD.model;
+package utez.edu.mx.u3_04_agjd.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
@@ -24,7 +26,7 @@ public class Almacen {
     private UUID id;
 
     @Column(name = "clave_almacen", unique = true, nullable = false)
-    private String claveAlmacen;
+    private String claveAlmacen = "A-00000000";
 
     @Column(name = "fecha_registro", nullable = false)
     private LocalDate fechaRegistro;
@@ -45,7 +47,13 @@ public class Almacen {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sede_id", nullable = false)
+    @JsonIgnore
     private Sede sede;
+
+    @JsonProperty("sedeId")
+    public UUID getSedeId() {
+        return this.sede != null ? this.sede.getId() : null;
+    }
 
     @PrePersist
     public void inicializar() {
@@ -54,7 +62,7 @@ public class Almacen {
         }
     }
 
-    public void generarClaveAlmacen() {
+    public void actualizarClaveAlmacen() {
         if (this.sede != null && this.sede.getClaveSede() != null) {
             this.claveAlmacen = String.format("%s-A%s", this.sede.getClaveSede(), this.id.toString().substring(0, 8));
         }

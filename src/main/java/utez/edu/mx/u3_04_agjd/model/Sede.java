@@ -1,4 +1,4 @@
-package utez.edu.mx.U3_04_AGJD.model;
+package utez.edu.mx.u3_04_agjd.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -26,8 +26,8 @@ public class Sede {
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
     
-    @Column(name = "clave_sede", unique = true, nullable = false)
-    private String claveSede;
+    @Column(name = "clave_sede", unique = true, nullable = false) // Default 0
+    private String claveSede = "C-00000000-0000-0000-0000-000000000000";
     
     @NotBlank(message = "El estado es obligatorio")
     @Size(min = 2, max = 50, message = "El estado debe tener entre 2 y 50 caracteres")
@@ -43,19 +43,16 @@ public class Sede {
     
     @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Almacen> almacenes;
-    
-    @PrePersist
-    public void generarClaveSede() {
-        if (this.claveSede == null) {
+
+
+
+    public void actualizarClaveSede() {
+        if (this.id != null) {
             String fecha = LocalDate.now().format(DateTimeFormatter.ofPattern("ddMMyyyy"));
             String digitosAleatorios = String.format("%04d", new Random().nextInt(10000));
-            this.claveSede = String.format("C%d-%s-%s", this.id != null ? this.id : 0, fecha, digitosAleatorios);
+
+            // Versión más simple y segura
+            this.claveSede = "C-" + this.id.toString().substring(0, 8) + "-" + fecha + "-" + digitosAleatorios;
         }
-    }
-    
-    public void actualizarClaveSede() {
-        String fecha = LocalDate.now().format(DateTimeFormatter.ofPattern("ddMMyyyy"));
-        String digitosAleatorios = String.format("%04d", new Random().nextInt(10000));
-        this.claveSede = String.format("C%s-%s-%s", this.id.toString().substring(0, 8), fecha, digitosAleatorios);
     }
 }

@@ -1,8 +1,8 @@
-package utez.edu.mx.U3_04_AGJD.service;
+package utez.edu.mx.u3_04_agjd.service;
 
-import utez.edu.mx.U3_04_AGJD.model.AuditLog;
-import utez.edu.mx.U3_04_AGJD.repository.AuditLogRepository;
-import utez.edu.mx.U3_04_AGJD.service.interfaces.IAuditService;
+import utez.edu.mx.u3_04_agjd.model.AuditLog;
+import utez.edu.mx.u3_04_agjd.repository.AuditLogRepository;
+import utez.edu.mx.u3_04_agjd.service.interfaces.IAuditService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
-package utez.edu.mx.U3_04_AGJD.service.interfaces;
+package utez.edu.mx.u3_04_agjd.service.interfaces;
 
-import utez.edu.mx.U3_04_AGJD.model.Cliente;
+import utez.edu.mx.u3_04_agjd.model.Cliente;
 
 import java.util.List;
 import java.util.Optional;

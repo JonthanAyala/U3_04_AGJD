@@ -1,6 +1,6 @@
-package utez.edu.mx.U3_04_AGJD.repository;
+package utez.edu.mx.u3_04_agjd.repository;
 
-import utez.edu.mx.U3_04_AGJD.model.AuditLog;
+import utez.edu.mx.u3_04_agjd.model.AuditLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

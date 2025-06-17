@@ -1,6 +1,6 @@
-package utez.edu.mx.U3_04_AGJD.config;
+package utez.edu.mx.u3_04_agjd.config;
 
-import utez.edu.mx.U3_04_AGJD.filter.RateLimitingFilter;
+import utez.edu.mx.u3_04_agjd.filter.RateLimitingFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
-package utez.edu.mx.U3_04_AGJD.service;
+package utez.edu.mx.u3_04_agjd.service;
 
-import utez.edu.mx.U3_04_AGJD.service.interfaces.IEncryptionService;
+import utez.edu.mx.u3_04_agjd.service.interfaces.IEncryptionService;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.Cipher;

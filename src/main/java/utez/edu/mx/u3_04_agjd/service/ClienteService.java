@@ -1,8 +1,8 @@
-package utez.edu.mx.U3_04_AGJD.service;
+package utez.edu.mx.u3_04_agjd.service;
 
-import utez.edu.mx.U3_04_AGJD.model.Cliente;
-import utez.edu.mx.U3_04_AGJD.repository.ClienteRepository;
-import utez.edu.mx.U3_04_AGJD.service.interfaces.IClienteService;
+import utez.edu.mx.u3_04_agjd.model.Cliente;
+import utez.edu.mx.u3_04_agjd.repository.ClienteRepository;
+import utez.edu.mx.u3_04_agjd.service.interfaces.IClienteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

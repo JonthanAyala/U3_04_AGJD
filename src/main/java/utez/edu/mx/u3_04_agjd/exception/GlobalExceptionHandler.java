@@ -1,4 +1,4 @@
-package utez.edu.mx.U3_04_AGJD.exception;
+package utez.edu.mx.u3_04_agjd.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

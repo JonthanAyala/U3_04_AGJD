@@ -1,8 +1,8 @@
-package utez.edu.mx.U3_04_AGJD.service;
+package utez.edu.mx.u3_04_agjd.service;
 
-import utez.edu.mx.U3_04_AGJD.model.Sede;
-import utez.edu.mx.U3_04_AGJD.repository.SedeRepository;
-import utez.edu.mx.U3_04_AGJD.service.interfaces.ISedeService;
+import utez.edu.mx.u3_04_agjd.model.Sede;
+import utez.edu.mx.u3_04_agjd.repository.SedeRepository;
+import utez.edu.mx.u3_04_agjd.service.interfaces.ISedeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

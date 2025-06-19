@@ -46,6 +46,9 @@ public class Cliente {
     
     @Column(name = "activo")
     private Boolean activo = true;
+
+    @OneToOne(mappedBy = "cliente")
+    private Almacen almacen;
     
     @PrePersist
     public void prePersist() {

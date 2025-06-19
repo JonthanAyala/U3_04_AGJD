@@ -44,6 +44,8 @@ public class Usuario {
     @Column(name = "ultimo_acceso")
     private LocalDateTime ultimoAcceso;
 
+
+
     @PrePersist
     public void prePersist() {
         this.fechaCreacion = LocalDateTime.now();

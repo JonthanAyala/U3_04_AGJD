@@ -50,6 +50,11 @@ public class Almacen {
     @JsonIgnore
     private Sede sede;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cliente_id")
+    @JsonIgnore
+    private Cliente cliente;
+
     @JsonProperty("sedeId")
     public UUID getSedeId() {
         return this.sede != null ? this.sede.getId() : null;

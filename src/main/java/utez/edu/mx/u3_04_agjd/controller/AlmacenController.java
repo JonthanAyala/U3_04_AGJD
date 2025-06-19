@@ -2,8 +2,11 @@ package utez.edu.mx.u3_04_agjd.controller;
 
 import utez.edu.mx.u3_04_agjd.dto.AlmacenCreateDTO;
 import utez.edu.mx.u3_04_agjd.dto.AlmacenUpdateDTO;
+import utez.edu.mx.u3_04_agjd.dto.VentaDTO;
 import utez.edu.mx.u3_04_agjd.model.Almacen;
+import utez.edu.mx.u3_04_agjd.model.Cliente;
 import utez.edu.mx.u3_04_agjd.model.Sede;
+import utez.edu.mx.u3_04_agjd.service.ClienteService;
 import utez.edu.mx.u3_04_agjd.service.interfaces.IAlmacenService;
 import utez.edu.mx.u3_04_agjd.service.interfaces.IAuditService;
 import jakarta.validation.Valid;
@@ -25,6 +28,7 @@ public class AlmacenController {
     private final IAlmacenService almacenService;
     private final IAuditService auditService;
     private final ISedeService sedeService;
+    private final ClienteService clienteService;
 
     @GetMapping
     public ResponseEntity<List<Almacen>> obtenerTodosLosAlmacenes() {
@@ -114,4 +118,27 @@ public class AlmacenController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @PutMapping("/venta")
+    public ResponseEntity<Almacen> venderAlmacen(@RequestBody VentaDTO ventaDTO) {
+        Optional<Almacen> almacenOpt = almacenService.obtenerAlmacenPorId(ventaDTO.getAlmacen());
+        if (almacenOpt.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null); //agrega un mensaje de error más descriptivo
+        }
+
+        if (almacenOpt.get().getCliente() != null) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+        }
+
+        Optional<Cliente> clienteOpt = clienteService.obtenerClientePorId(ventaDTO.getCliente());
+        if (clienteOpt.isEmpty()){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+        }
+        almacenOpt.get().setCliente(clienteOpt.get());
+        almacenService.actualizarAlmacen(ventaDTO.getAlmacen(), almacenOpt.get());
+
+        auditService.logAction("SELL", "Almacen", ventaDTO.getAlmacen().toString(), "Almacén vendido a cliente: " + ventaDTO.getCliente().toString());
+        return ResponseEntity.status(HttpStatus.OK).body(almacenOpt.get());
+    }
+
 }

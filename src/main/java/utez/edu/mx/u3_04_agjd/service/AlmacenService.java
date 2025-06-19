@@ -65,6 +65,7 @@ public class AlmacenService implements IAlmacenService {
                     almacen.setPrecioVenta(almacenActualizado.getPrecioVenta());
                     almacen.setPrecioRenta(almacenActualizado.getPrecioRenta());
                     almacen.setTamano(almacenActualizado.getTamano());
+                    almacen.setCliente(almacenActualizado.getCliente());
                     return almacenRepository.save(almacen);
                 });
     }
